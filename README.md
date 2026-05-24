@@ -1,1 +1,1021 @@
 # reshmajain-portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reshma Jain | Operations & Project Management Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e63946;
+            --accent-light: #f4a261;
+            --teal: #2a9d8f;
+            --gold: #e9c46a;
+            --purple: #9b5de5;
+            --cyan: #00bbf9;
+            --pink: #f15bb5;
+            --text: #f1f1f1;
+            --text-muted: #a0a0a0;
+            --glass: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-30px) translateX(20px); }
+            50% { transform: translateY(20px) translateX(-20px); }
+            75% { transform: translateY(-10px) translateX(30px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26,26,46,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        nav.scrolled { padding: 0.6rem 5%; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .mobile-menu { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-text h3 {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        .hero-text h1 span { color: var(--accent-light); }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 30px rgba(230,57,70,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230,57,70,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--glass-border);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+        .hero-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(230,57,70,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .hero-card-content { position: relative; z-index: 1; }
+        .profile-img {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+        .hero-card h4 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+        .hero-card .role { color: var(--accent-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .quick-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-item .label { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* Section styling */
+        section { padding: 6rem 5%; position: relative; z-index: 1; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header h3 {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .highlight-icon {
+            width: 50px; height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .highlight-item h4 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .highlight-item p { font-size: 0.85rem !important; margin: 0 !important; }
+
+        .about-visual {
+            position: relative;
+        }
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--teal), var(--purple));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem; top: 1.8rem;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--primary);
+        }
+        .timeline-item .date {
+            color: var(--accent-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .timeline-item .company { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .timeline-item ul { list-style: none; padding: 0; }
+        .timeline-item li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .timeline-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .skill-category {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .skill-category .cat-icon {
+            width: 60px; height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .skill-category h4 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-tag {
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+        .skill-tag:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .project-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-header {
+            padding: 2rem 2rem 1rem;
+            position: relative;
+        }
+        .project-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .project-card h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .project-card .project-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+        .project-card p { color: var(--text-muted); font-size: 0.9rem; padding: 0 2rem; margin-bottom: 1rem; }
+        .project-tags {
+            padding: 0 2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .project-tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Certifications */
+        .certs-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .cert-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .cert-icon {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            background: rgba(230,57,70,0.1);
+            border: 2px solid rgba(230,57,70,0.3);
+        }
+        .cert-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .cert-card .issuer { color: var(--accent-light); font-size: 0.85rem; font-weight: 600; }
+
+        /* Languages */
+        .languages-bar {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .lang-item {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            min-width: 140px;
+        }
+        .lang-item .lang-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .lang-item .lang-level { color: var(--accent-light); font-size: 0.85rem; }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--primary) 0%, #0f0f1a 100%);
+            text-align: center;
+        }
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .contact p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .contact-item i { color: var(--accent); font-size: 1.1rem; }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .social-links a {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-buttons { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .certs-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 2.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">RJ.</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h3>Operations & Project Management</h3>
+                <h1>Reshma <span>Jain</span></h1>
+                <p>Operations-focused professional with international exposure in France and India. Experienced in high-volume transactional environments, SLA compliance, data analysis, and cross-functional stakeholder management.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+                    <a href="#about" class="btn btn-outline"><i class="fas fa-user"></i> About Me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-content">
+                        <div class="profile-img">RJ</div>
+                        <h4>Reshma Jain</h4>
+                        <p class="role">Operations & PM Professional</p>
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <div class="number">2+</div>
+                                <div class="label">Years Exp.</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number">3</div>
+                                <div class="label">Certifications</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number">5</div>
+                                <div class="label">Languages</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number">25</div>
+                                <div class="label">Team Led</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <h3>About Me</h3>
+            <h2>Professional Profile</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <p>I am an operations-focused professional with a strong foundation in project management, data analysis, and stakeholder management. With international exposure from studying and working in France, I bring a global perspective to operational excellence.</p>
+                <p>My experience spans high-volume, fast-paced transactional environments where I've proven my ability to coordinate internal resources, ensure SLA compliance, and drive process improvements.</p>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon" style="background: rgba(230,57,70,0.1); color: var(--accent);"><i class="fas fa-globe"></i></div>
+                        <div>
+                            <h4>International Exposure</h4>
+                            <p>Studied & worked in France</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon" style="background: rgba(42,157,143,0.1); color: var(--teal);"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h4>Data-Driven</h4>
+                            <p>SQL, Tableau & Analytics</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon" style="background: rgba(233,196,106,0.1); color: var(--gold);"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h4>Team Leadership</h4>
+                            <p>Led 25-member teams</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon" style="background: rgba(155,93,229,0.1); color: var(--purple);"><i class="fas fa-project-diagram"></i></div>
+                        <div>
+                            <h4>Project Management</h4>
+                            <p>CAPM Certified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual fade-in">
+                <div class="experience-timeline" id="experience">
+                    <div class="timeline-item">
+                        <div class="date">Aug 2024 – Dec 2025</div>
+                        <h4>Customer Service Representative</h4>
+                        <p class="company">TechMahindra, Bengaluru</p>
+                        <ul>
+                            <li>Managed high-volume payment escalations for Amazon customers</li>
+                            <li>Coordinated with banking partners for transaction resolution</li>
+                            <li>Utilized AC3 ticketing system for SLA compliance</li>
+                            <li>Developed data reports reducing resolution time</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">Jun 2020 – Nov 2020</div>
+                        <h4>Business Development Intern</h4>
+                        <p class="company">Albert Gugein, Lille, France</p>
+                        <ul>
+                            <li>Coordinated with creative & marketing teams</li>
+                            <li>Tracked campaign engagement via Instagram Insights</li>
+                            <li>Created promotional materials using Canva</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">Sep 2020</div>
+                        <h4>Vice President – People Management</h4>
+                        <p class="company">AIESEC, Lille, France</p>
+                        <ul>
+                            <li>Led 25-member team with 80% retention rate</li>
+                            <li>Facilitated global exchange programs</li>
+                            <li>Implemented data-driven retention strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="section-header fade-in">
+            <h3>Expertise</h3>
+            <h2>Skills & Competencies</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <div class="cat-icon" style="background: rgba(230,57,70,0.1); color: var(--accent);"><i class="fas fa-tasks"></i></div>
+                <h4>Project Management</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">MS Project</span>
+                    <span class="skill-tag">Project Scoping</span>
+                    <span class="skill-tag">Risk Management</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">SLA Compliance</span>
+                    <span class="skill-tag">Process Improvement</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <div class="cat-icon" style="background: rgba(42,157,143,0.1); color: var(--teal);"><i class="fas fa-database"></i></div>
+                <h4>Data & Analytics</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Google Workspace</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">AC3 Ticketing</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <div class="cat-icon" style="background: rgba(0,187,249,0.1); color: var(--cyan);"><i class="fas fa-handshake"></i></div>
+                <h4>Soft Skills</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Team Collaboration</span>
+                    <span class="skill-tag">Cross-Functional Coordination</span>
+                    <span class="skill-tag">Stakeholder Communication</span>
+                    <span class="skill-tag">Strategic Planning</span>
+                    <span class="skill-tag">Leadership Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-header fade-in">
+            <h3>Portfolio</h3>
+            <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <span class="project-badge" style="background: rgba(155,93,229,0.2); color: var(--purple);">Sustainability</span>
+                    <h4>Sustainable Makeup Reuse Project</h4>
+                    <p class="project-meta"><i class="fas fa-building"></i> L'Oréal Collaboration &nbsp;|&nbsp; <i class="fas fa-map-marker-alt"></i> Lille, France</p>
+                </div>
+                <p>Collaborated with a cross-functional IESEG team to develop innovative and sustainable makeup recycling solutions aligned with L'Oréal's corporate sustainability goals. Conducted market research and stakeholder analysis to identify viable reuse strategies.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Tableau</span>
+                    <span class="project-tag">Market Research</span>
+                    <span class="project-tag">Reverse Logistics</span>
+                    <span class="project-tag">Stakeholder Analysis</span>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <span class="project-badge" style="background: rgba(244,162,97,0.2); color: var(--accent-light);">Operations</span>
+                    <h4>Payment Escalation Optimization</h4>
+                    <p class="project-meta"><i class="fas fa-building"></i> TechMahindra &nbsp;|&nbsp; <i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+                </div>
+                <p>Developed and maintained comprehensive data reports, payment records, and finance operations documentation to support cross-functional teams. Implemented process improvements that reduced average resolution time in a high-pressure operational environment.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Data Reporting</span>
+                    <span class="project-tag">SLA Management</span>
+                    <span class="project-tag">Process Optimization</span>
+                    <span class="project-tag">AC3 System</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="section-header fade-in">
+            <h3>Credentials</h3>
+            <h2>Certifications</h2>
+        </div>
+        <div class="certs-grid">
+            <div class="cert-card fade-in">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <h4>Certified Associate in Project Management</h4>
+                <p class="issuer">PMI</p>
+            </div>
+            <div class="cert-card fade-in">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <h4>Fundamentals of Project Management</h4>
+                <p class="issuer">Professional Certification</p>
+            </div>
+            <div class="cert-card fade-in">
+                <div class="cert-icon"><i class="fas fa-medal"></i></div>
+                <h4>Advanced Project Management</h4>
+                <p class="issuer">IIM Rohtak</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="languages">
+        <div class="section-header fade-in">
+            <h3>Multilingual</h3>
+            <h2>Languages</h2>
+        </div>
+        <div class="languages-bar">
+            <div class="lang-item fade-in">
+                <div class="lang-name">English</div>
+                <div class="lang-level">Fluent</div>
+            </div>
+            <div class="lang-item fade-in">
+                <div class="lang-name">Hindi</div>
+                <div class="lang-level">Native</div>
+            </div>
+            <div class="lang-item fade-in">
+                <div class="lang-name">French</div>
+                <div class="lang-level">B1</div>
+            </div>
+            <div class="lang-item fade-in">
+                <div class="lang-name">Kannada</div>
+                <div class="lang-level">Conversational</div>
+            </div>
+            <div class="lang-item fade-in">
+                <div class="lang-name">Telugu</div>
+                <div class="lang-level">Conversational</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" style="background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);">
+        <div class="section-header fade-in">
+            <h3>Academic</h3>
+            <h2>Education</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="project-card fade-in" style="text-align: center; padding: 3rem;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--cyan)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: white;"><i class="fas fa-graduation-cap"></i></div>
+                <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem;">IESEG School of Management</h4>
+                <p style="color: var(--accent-light); font-weight: 600; margin-bottom: 0.5rem;">Bachelor's in International Business</p>
+                <p style="color: var(--text-muted); margin-bottom: 0.3rem;">Concentration: Project Management | Honors: Operations</p>
+                <p style="color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> Lille, France &nbsp;|&nbsp; <i class="fas fa-calendar"></i> April 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content fade-in">
+            <h3 style="color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;">Let's Connect</h3>
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new opportunities, project collaborations, or just having a conversation about operations and project management.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>reshmapjain@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 99026 30986</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Bengaluru, India</span>
+                </div>
+            </div>
+            <a href="mailto:reshmapjain@gmail.com" class="btn btn-primary" style="margin-top: 1rem;"><i class="fas fa-paper-plane"></i> Send Email</a>
+            <div class="social-links">
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Reshma Jain. All rights reserved. | Designed with passion for operational excellence.</p>
+    </footer>
+
+    <script>
+        // Particle background
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['#e63946', '#f4a261', '#2a9d8f', '#e9c46a', '#9b5de5', '#00bbf9'];
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'rgba(26,26,46,0.95)';
+            navLinks.style.padding = '1rem';
+            navLinks.style.backdropFilter = 'blur(20px)';
+        }
+    </script>
+</body>
+</html>
